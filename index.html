@@ -130,7 +130,7 @@
   <button class="ctrl on" id="btnInfo"><span class="ico">📖</span><span>Nội dung</span></button>
   <button class="ctrl" id="btnMusic"><span class="ico">🎵</span><span>Nhạc</span></button>
   <button class="ctrl on" id="btnRotate"><span class="ico">⟳</span><span>Tự xoay</span></button>
-  <button class="ctrl" id="btnEye"><span class="ico">◎</span><span>Mũi tên</span></button>
+  <button class="ctrl on" id="btnEye"><span class="ico">◎</span><span>Mũi tên</span></button>
   <button class="ctrl" id="btnGyro" style="display:none"><span class="ico">🧭</span><span>Xoay theo máy</span></button>
   <button class="ctrl" id="btnFull"><span class="ico">⛶</span><span>Toàn màn hình</span></button>
 </div>
@@ -265,7 +265,7 @@ $("#btnPrev").onclick=()=>go(-1); $("#btnNext").onclick=()=>go(1);
 $("#btnHome").onclick=()=>viewer.loadScene(DATA.first||DATA.order[0]);
 $("#btnRotate").onclick=function(){ rotating=!rotating; this.classList.toggle("on",rotating);
   rotating?viewer.startAutoRotate(-2):viewer.stopAutoRotate(); };
-$("#btnEye").onclick=function(){ this.classList.toggle("on", document.body.classList.toggle("nohs")); };
+$("#btnEye").onclick=function(){ const hidden=document.body.classList.toggle("nohs"); this.classList.toggle("on", !hidden); };
 $("#btnFull").onclick=function(){ const el=document.documentElement;
   if(!document.fullscreenElement){ (el.requestFullscreen||el.webkitRequestFullscreen||(()=>{})).call(el); this.classList.add("on"); }
   else{ (document.exitFullscreen||document.webkitExitFullscreen||(()=>{})).call(document); this.classList.remove("on"); } };
