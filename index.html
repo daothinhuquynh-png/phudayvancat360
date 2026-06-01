@@ -32,6 +32,18 @@
   .pnlm-hotspot.info-hs{display:none}
   /* Nút Nội dung mờ khi cảnh hiện tại không có chú thích */
   .ctrl.dim{opacity:.4;cursor:default}
+  /* ===== Overlay tên toà hiện 2 giây khi đổi cảnh tự động ===== */
+  #snametoast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:7;pointer-events:none;
+    background:rgba(15,10,7,.86);border:1px solid rgba(199,154,58,.6);border-radius:14px;
+    padding:14px 26px;color:#fff;text-align:center;backdrop-filter:blur(6px);
+    opacity:0;transition:opacity .35s ease}
+  #snametoast.show{opacity:1}
+  #snametoast .lbl{font-size:11px;letter-spacing:1.5px;color:var(--vang);opacity:.85;text-transform:uppercase}
+  #snametoast .n{font-size:18px;font-weight:600;margin-top:4px;line-height:1.25}
+  /* Vòng đếm ngược nhỏ cạnh nút Tự chạy */
+  #autoring{position:fixed;left:0;right:0;bottom:0;z-index:7;height:2px;pointer-events:none;display:none}
+  #autoring .bar{height:100%;background:var(--vang);width:0%;transition:width .25s linear;opacity:.7}
+  body.touring:not(.auto-off) #autoring{display:block}
 
   header{position:fixed;top:0;left:0;right:0;z-index:6;display:flex;align-items:center;gap:11px;
     padding:max(10px,env(safe-area-inset-top)) 16px 10px;pointer-events:none;
@@ -129,6 +141,7 @@
   <button class="ctrl" id="btnHome"><span class="ico">⌂</span><span>Điểm đầu</span></button>
   <button class="ctrl on" id="btnInfo"><span class="ico">📖</span><span>Nội dung</span></button>
   <button class="ctrl" id="btnMusic"><span class="ico">🎵</span><span>Nhạc</span></button>
+  <button class="ctrl on" id="btnAuto"><span class="ico">🎬</span><span>Tự chạy</span></button>
   <button class="ctrl on" id="btnRotate"><span class="ico">⟳</span><span>Tự xoay</span></button>
   <button class="ctrl on" id="btnEye"><span class="ico">◎</span><span>Mũi tên</span></button>
   <button class="ctrl" id="btnGyro" style="display:none"><span class="ico">🧭</span><span>Xoay theo máy</span></button>
@@ -154,6 +167,9 @@
     <button id="start">▶ Bắt đầu tham quan</button>
   </div>
 </div>
+
+<div id="snametoast"><div class="lbl">▶ ĐANG TỚI</div><div class="n" id="stname"></div></div>
+<div id="autoring"><div class="bar" id="autobar"></div></div>
 
 <audio id="bgm" loop preload="auto"></audio>
 
@@ -264,7 +280,7 @@ function go(step){ const o=DATA.order, i=o.indexOf(currentScene); viewer.loadSce
 $("#btnPrev").onclick=()=>go(-1); $("#btnNext").onclick=()=>go(1);
 $("#btnHome").onclick=()=>viewer.loadScene(DATA.first||DATA.order[0]);
 $("#btnRotate").onclick=function(){ rotating=!rotating; this.classList.toggle("on",rotating);
-  rotating?viewer.startAutoRotate(-2):viewer.stopAutoRotate(); };
+  if(rotating) setRotateSpeed(); else viewer.stopAutoRotate(); };
 $("#btnEye").onclick=function(){ const hidden=document.body.classList.toggle("nohs"); this.classList.toggle("on", !hidden); };
 $("#btnFull").onclick=function(){ const el=document.documentElement;
   if(!document.fullscreenElement){ (el.requestFullscreen||el.webkitRequestFullscreen||(()=>{})).call(el); this.classList.add("on"); }
@@ -289,8 +305,63 @@ function playMusic(){ if(!hasAudio)return; bgm.play().then(()=>{musicOn=true;$("
 $("#btnMusic").onclick=function(){ if(!hasAudio)return;
   if(musicOn){ bgm.pause(); musicOn=false; this.classList.remove("on"); } else playMusic(); };
 
+/* ===== Tour tự chạy: 45s/cảnh, kéo/chạm để đếm lại ===== */
+let autoOn=true, autoTimer=null, autoBarI=null;
+const AUTO_MS=45000, AUTO_SPEED=-10, ROTATE_SPEED=-2;
+
+function setRotateSpeed(){ if(!viewer) return;
+  try{ viewer.stopAutoRotate(); }catch(e){}
+  if(rotating) viewer.startAutoRotate(autoOn?AUTO_SPEED:ROTATE_SPEED);
+}
+function showSceneToast(name){ if(!name) return;
+  $("#stname").textContent=name; $("#snametoast").classList.add("show");
+  clearTimeout(window._toastT); window._toastT=setTimeout(()=>$("#snametoast").classList.remove("show"),2200);
+}
+function clearAutoTimer(){
+  if(autoTimer){ clearTimeout(autoTimer); autoTimer=null; }
+  if(autoBarI){ clearInterval(autoBarI); autoBarI=null; }
+  $("#autobar").style.width="0%";
+}
+function scheduleAutoNext(){
+  clearAutoTimer();
+  if(!autoOn || !document.body.classList.contains("touring")) return;
+  const start=Date.now();
+  autoBarI=setInterval(()=>{
+    const p=Math.min(100,(Date.now()-start)/AUTO_MS*100);
+    $("#autobar").style.width=p+"%";
+    if(p>=100){ clearInterval(autoBarI); autoBarI=null; }
+  },200);
+  autoTimer=setTimeout(()=>{ autoTimer=null;
+    const o=DATA.order, i=o.indexOf(currentScene);
+    const next=o[(i+1)%o.length];
+    showSceneToast(DATA.names[next]||"");
+    viewer.loadScene(next);
+  }, AUTO_MS);
+}
+function userInteracted(){ if(autoOn) scheduleAutoNext(); }
+$("#btnAuto").onclick=function(){
+  autoOn=!autoOn; this.classList.toggle("on",autoOn);
+  document.body.classList.toggle("auto-off",!autoOn);
+  setRotateSpeed();
+  if(autoOn) scheduleAutoNext(); else clearAutoTimer();
+};
+// Reset đồng hồ khi user kéo ảnh hoặc bấm bất kỳ nút điều khiển
+document.addEventListener("pointerdown",e=>{
+  if(e.target.closest("#cover")) return;
+  userInteracted();
+},true);
+
+// Mở rộng onScene đã có: thêm toast tên toà + đặt lại đếm
+const _origOnScene=onScene;
+onScene=function(){ _origOnScene.apply(this,arguments);
+  if(document.body.classList.contains("touring")) showSceneToast(DATA.names[currentScene]||"");
+  scheduleAutoNext();
+};
+
 $("#start").onclick=function(){ $("#cover").classList.add("hide");
-  if(rotating&&viewer) viewer.startAutoRotate(-2); playMusic();
+  document.body.classList.add("touring");
+  setRotateSpeed(); playMusic(); scheduleAutoNext();
+  showSceneToast(DATA.names[currentScene]||"");
   setTimeout(()=>{ const c=$("#cover"); if(c) c.remove(); },800); };
 </script>
 </body>
