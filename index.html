@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Tour 360°</title>
+<link rel="stylesheet" href="vendor/pannellum.css">
+<style>
+  :root{ --do:#7a1f1f; --vang:#c79a3a; --glass:rgba(18,12,8,.62); }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;height:100%;font-family:-apple-system,"Segoe UI",Roboto,sans-serif;background:#15100c;color:#fff;overflow:hidden}
+  #pano{position:absolute;inset:0}
+  .pnlm-lbox,.pnlm-lmsg,.pnlm-lbar,.pnlm-load-box{display:none!important}
+  body.nohs .pnlm-hotspot{display:none!important}
+
+  /* ===== Mũi tên kiểu mới: chữ nhỏ + thumbnail tròn + chevron ===== */
+  .pnlm-hotspot.nav-hs{
+    width:120px;height:84px;background:none;cursor:pointer;text-align:center;
+    transform:translate(-50%,-100%);pointer-events:auto;user-select:none;font-family:inherit}
+  .nav-hs .lbl{display:inline-block;background:rgba(20,12,8,.86);color:#fff;
+    padding:3px 9px;border-radius:11px;font-size:11px;font-weight:600;letter-spacing:.2px;
+    max-width:118px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+    box-shadow:0 2px 6px rgba(0,0,0,.4)}
+  .nav-hs .thumb{margin:4px auto 0;width:38px;height:38px;border-radius:50%;
+    border:2px solid var(--vang);background:#333 center/cover no-repeat;
+    box-shadow:0 4px 12px rgba(0,0,0,.55)}
+  /* Chevron vàng — chỉ thẳng xuống 90° */
+  .nav-hs .chev{width:16px;height:16px;margin:3px auto 0;
+    border-right:4px solid var(--vang);border-bottom:4px solid var(--vang);
+    transform:rotate(45deg);filter:drop-shadow(0 2px 3px rgba(0,0,0,.5))}
+  /* ===== Chấm chú thích: ẩn hẳn trên ảnh — nội dung đã hiện trong bảng bên phải ===== */
+  .pnlm-hotspot.info-hs{display:none}
+  /* Nút Nội dung mờ khi cảnh hiện tại không có chú thích */
+  .ctrl.dim{opacity:.4;cursor:default}
+
+  header{position:fixed;top:0;left:0;right:0;z-index:6;display:flex;align-items:center;gap:11px;
+    padding:max(10px,env(safe-area-inset-top)) 16px 10px;pointer-events:none;
+    background:linear-gradient(180deg,rgba(15,10,7,.85),rgba(15,10,7,0))}
+  header .logo{width:38px;height:38px;border-radius:50%;background:var(--do);color:var(--vang);
+    display:grid;place-items:center;font-weight:700;font-size:12px;border:2px solid var(--vang);flex:0 0 auto}
+  header h1{font-size:16px;margin:0;font-weight:600;text-shadow:0 1px 4px #000;line-height:1.2}
+  header h1 .cur{color:var(--vang)} header h1 small{display:block;font-size:10.5px;font-weight:400;opacity:.8}
+
+  #bar{position:fixed;left:0;right:0;bottom:0;z-index:6;display:flex;justify-content:center;gap:7px;
+    padding:10px 10px calc(10px + env(safe-area-inset-bottom));overflow-x:auto;scrollbar-width:none;
+    background:linear-gradient(0deg,rgba(15,10,7,.92),rgba(15,10,7,0))}
+  #bar::-webkit-scrollbar{display:none}
+  .ctrl{pointer-events:auto;cursor:pointer;border:1px solid rgba(199,154,58,.5);background:var(--glass);
+    color:#fff;border-radius:12px;padding:9px 12px;font-size:13px;display:flex;align-items:center;gap:7px;
+    backdrop-filter:blur(8px);transition:.15s;white-space:nowrap;flex:0 0 auto}
+  .ctrl:hover{background:rgba(122,31,31,.85)} .ctrl.on{background:var(--do);border-color:var(--vang)}
+  .ctrl .ico{font-size:16px;line-height:1}
+
+  #places{position:fixed;left:0;right:0;bottom:0;z-index:8;background:rgba(15,10,7,.97);
+    border-top-left-radius:18px;border-top-right-radius:18px;border-top:1px solid rgba(199,154,58,.4);
+    padding:8px 12px calc(14px + env(safe-area-inset-bottom));transform:translateY(106%);
+    transition:transform .32s cubic-bezier(.4,0,.2,1);max-height:70vh;display:flex;flex-direction:column}
+  #places.open{transform:translateY(0)}
+  #places .ph{display:flex;align-items:center;justify-content:space-between;padding:6px 4px 8px}
+  #places .ph b{color:var(--vang);font-size:14px}
+  .close{cursor:pointer;border:0;background:transparent;color:#ddd;font-size:24px;line-height:1;padding:0 6px}
+  #tabs{display:flex;gap:7px;overflow-x:auto;padding:2px 2px 10px;scrollbar-width:none}
+  #tabs::-webkit-scrollbar{display:none}
+  .tab{cursor:pointer;white-space:nowrap;border:1px solid rgba(199,154,58,.45);background:transparent;color:#eee;
+    border-radius:20px;padding:6px 14px;font-size:12.5px;flex:0 0 auto}
+  .tab.on{background:#fff;color:#241a10;font-weight:700;border-color:#fff}
+  #grid{overflow-y:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:10px;padding:2px 2px 4px}
+  .place{cursor:pointer;border-radius:10px;overflow:hidden;border:2px solid transparent;background:#241a12;position:relative}
+  .place img{width:100%;height:96px;object-fit:cover;display:block;opacity:.92}
+  .place .cap{position:absolute;left:0;right:0;bottom:0;padding:14px 8px 6px;font-size:12px;font-weight:600;
+    background:linear-gradient(0deg,rgba(0,0,0,.82),transparent);display:flex;align-items:center;gap:6px}
+  .place .n{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;
+    background:var(--vang);color:#241a10;font-weight:700;font-size:11px;flex:0 0 auto}
+  .place.active{border-color:var(--vang)}
+  #backdrop{position:fixed;inset:0;z-index:7;background:rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:.3s}
+  #backdrop.show{opacity:1;pointer-events:auto}
+
+  /* ===== Bảng chú thích (chỉ hiện khi bấm vào chấm "i") ===== */
+  #ipanel{position:fixed;right:14px;top:60px;width:360px;max-width:calc(100vw - 28px);
+    z-index:9;background:rgba(15,10,7,.97);border:1px solid rgba(199,154,58,.45);border-radius:14px;
+    padding:14px 16px;font-size:12.5px;line-height:1.6;
+    transform:translateX(120%);transition:transform .3s cubic-bezier(.4,0,.2,1);
+    max-height:calc(100vh - 130px);display:flex;flex-direction:column}
+  #ipanel.open{transform:translateX(0)}
+  #ipanel .ph{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px}
+  #ipanel h3{margin:0;font-size:13px;color:var(--vang);line-height:1.35}
+  #ibody{overflow-y:auto;color:#eadfc8;font-size:12.5px;line-height:1.65;padding-right:4px}
+
+  #cover{position:fixed;inset:0;z-index:20;display:grid;place-items:center;text-align:center;padding:24px;
+    background:radial-gradient(120% 120% at 50% 30%,rgba(40,18,12,.6),rgba(10,7,5,.92)),#0b0705}
+  #cover.hide{opacity:0;pointer-events:none;transition:opacity .7s}
+  #cover .logo{width:74px;height:74px;border-radius:50%;background:var(--do);color:var(--vang);
+    display:grid;place-items:center;font-weight:700;font-size:22px;border:3px solid var(--vang);margin:0 auto 18px}
+  #cover h1{font-size:25px;margin:0 0 8px;letter-spacing:.5px}
+  #cover p{opacity:.85;max-width:520px;margin:0 auto 26px;line-height:1.55;font-size:14px}
+  #start{cursor:pointer;border:0;background:var(--vang);color:#241a10;font-weight:700;font-size:15px;
+    padding:13px 30px;border-radius:30px;box-shadow:0 6px 24px rgba(199,154,58,.35)}
+
+  @media(max-width:600px){
+    header h1{font-size:14px} header h1 small{font-size:9.5px} header .logo{width:34px;height:34px}
+    .ctrl{padding:9px 10px;font-size:0;gap:0} .ctrl .ico{font-size:19px}
+    #grid{grid-template-columns:1fr 1fr}
+    #cover h1{font-size:21px}
+    /* Bảng chú thích trên mobile: trượt từ đáy */
+    #ipanel{right:0;left:0;top:auto;bottom:0;width:auto;max-width:100%;
+      border-radius:18px 18px 0 0;max-height:60vh;transform:translateY(110%)}
+    #ipanel.open{transform:translateY(0)}
+    .nav-hs{width:96px;height:78px}
+    .nav-hs .lbl{font-size:10.5px;padding:2px 7px;max-width:96px}
+    .nav-hs .thumb{width:32px;height:32px}
+    .nav-hs .chev{width:13px;height:13px;border-right-width:3px;border-bottom-width:3px}
+  }
+</style>
+</head>
+<body>
+<div id="pano"></div>
+
+<header>
+  <div class="logo" id="hlogo">·</div>
+  <h1 id="htitle">Tour 360°<small></small></h1>
+</header>
+
+<div id="backdrop"></div>
+
+<div id="bar">
+  <button class="ctrl" id="btnPlaces"><span class="ico">▦</span><span>Địa điểm</span></button>
+  <button class="ctrl" id="btnPrev"><span class="ico">‹</span><span>Trước</span></button>
+  <button class="ctrl" id="btnNext"><span class="ico">›</span><span>Sau</span></button>
+  <button class="ctrl" id="btnHome"><span class="ico">⌂</span><span>Điểm đầu</span></button>
+  <button class="ctrl on" id="btnInfo"><span class="ico">📖</span><span>Nội dung</span></button>
+  <button class="ctrl" id="btnMusic"><span class="ico">🎵</span><span>Nhạc</span></button>
+  <button class="ctrl on" id="btnRotate"><span class="ico">⟳</span><span>Tự xoay</span></button>
+  <button class="ctrl" id="btnEye"><span class="ico">◎</span><span>Mũi tên</span></button>
+  <button class="ctrl" id="btnGyro" style="display:none"><span class="ico">🧭</span><span>Xoay theo máy</span></button>
+  <button class="ctrl" id="btnFull"><span class="ico">⛶</span><span>Toàn màn hình</span></button>
+</div>
+
+<div id="places">
+  <div class="ph"><b>📍 Chọn địa điểm</b><button class="close" id="placesClose">×</button></div>
+  <div id="tabs"></div>
+  <div id="grid"></div>
+</div>
+
+<div id="ipanel">
+  <div class="ph"><h3 id="ipt">Chú thích</h3><button class="close" id="ipclose">×</button></div>
+  <div id="ibody"></div>
+</div>
+
+<div id="cover">
+  <div>
+    <div class="logo" id="clogo">·</div>
+    <h1 id="ctitle">Tour 360°</h1>
+    <p id="csub"></p>
+    <button id="start">▶ Bắt đầu tham quan</button>
+  </div>
+</div>
+
+<audio id="bgm" loop preload="auto"></audio>
+
+<script src="vendor/pannellum.js"></script>
+<script>
+const $=s=>document.querySelector(s), esc=s=>(s||"").replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+let DATA, viewer, rotating=true, groups=[], activeTab=0;
+const AUDIO_SRC="audio/nhacnen.mp3";
+const thumbOf=id=>(DATA.scenes[id]?.panorama||"").replace("panos/","thumbs/");
+
+fetch("tour.json").then(r=>r.json()).then(d=>{ DATA=d; init(); });
+
+/* ===== Vẽ mũi tên kiểu thumbnail + tên ===== */
+function navTooltip(div, args){
+  div.innerHTML =
+    '<div class="lbl">'+esc(args.label)+'</div>'+
+    '<div class="thumb" style="background-image:url('+args.thumb+')"></div>'+
+    '<div class="chev"></div>';
+}
+function infoTooltip(div, args){ /* không tooltip — chỉ icon nhỏ */ }
+function openInfo(title, text){
+  $("#ipt").textContent=title; $("#ibody").textContent=text;
+  $("#ipanel").classList.add("open");
+}
+let infoOn=true;
+function getInfoOfCurrent(){
+  const sc=DATA && DATA.scenes && DATA.scenes[currentScene];
+  if(!sc) return null;
+  const h=sc.hotSpots.find(x=>x.type==="info" && x.text && x.text.trim());
+  return h||null;
+}
+function updateInfo(){
+  const h=getInfoOfCurrent(), btn=$("#btnInfo");
+  if(!h){ btn.classList.add("dim"); btn.classList.remove("on"); $("#ipanel").classList.remove("open"); return; }
+  btn.classList.remove("dim");
+  if(infoOn){ openInfo(DATA.names[currentScene]||"Chú thích", h.text); btn.classList.add("on"); }
+  else { $("#ipanel").classList.remove("open"); btn.classList.remove("on"); }
+}
+$("#ipclose").onclick=()=>{ $("#ipanel").classList.remove("open"); infoOn=false; $("#btnInfo").classList.remove("on"); };
+$("#btnInfo").onclick=function(){ if(!getInfoOfCurrent()) return; infoOn=!infoOn; updateInfo(); };
+
+function hsCfg(h){
+  if(h.type==="scene"){
+    const label = h.text || DATA.names[h.sceneId] || h.sceneId;
+    return { type:"scene", sceneId:h.sceneId, yaw:h.yaw, pitch:h.pitch,
+             cssClass:"nav-hs", createTooltipFunc:navTooltip,
+             createTooltipArgs:{label:label, thumb:thumbOf(h.sceneId)} };
+  }
+  return { type:"info", yaw:h.yaw, pitch:h.pitch,
+           cssClass:"info-hs", createTooltipFunc:infoTooltip,
+           clickHandlerFunc:()=>openInfo(DATA.names[currentScene]||"Chú thích", h.text),
+           clickHandlerArgs:{} };
+}
+
+let currentScene=null;
+function init(){
+  const title=DATA.title||"Tour 360°", sub=DATA.subtitle||"";
+  document.title=title+" 360°";
+  const initials=title.replace(/^(Đền|Đình|Chùa|Miếu|Phủ)\s+/i,"").trim().split(/\s+/).slice(0,2).map(w=>w[0]||"").join("").toUpperCase()||"360";
+  $("#hlogo").textContent=initials; $("#clogo").textContent=initials;
+  $("#ctitle").textContent=title; $("#csub").textContent=sub;
+  window._title=title; window._sub=sub;
+
+  groups = (DATA.groups && DATA.groups.length) ? DATA.groups : [{name:"Tất cả",scenes:DATA.order.slice()}];
+  currentScene = DATA.first || DATA.order[0];
+
+  const scenes={};
+  for(const id of DATA.order){ const s=DATA.scenes[id];
+    scenes[id]={title:DATA.names[id],panorama:s.panorama,hotSpots:s.hotSpots.map(hsCfg)}; }
+  viewer=pannellum.viewer("pano",{
+    default:{firstScene:currentScene,autoLoad:true,compass:true,
+             showControls:false,sceneFadeDuration:900,autoRotateInactivityDelay:3000},
+    scenes:scenes
+  });
+  viewer.on("load",onScene); viewer.on("scenechange",onScene);
+
+  buildTabs(); renderGrid(); setupAudio(); setupGyro();
+}
+
+function onScene(){ currentScene=viewer.getScene();
+  $("#htitle").innerHTML=esc(window._title)+' <span class="cur">· '+esc(DATA.names[currentScene]||"")+'</span>'+
+    "<small>"+esc(window._sub)+"</small>";
+  const gi=groups.findIndex(g=>g.scenes.includes(currentScene));
+  if(gi>=0 && gi!==activeTab){ activeTab=gi; buildTabs(); renderGrid(); }
+  document.querySelectorAll(".place").forEach(t=>t.classList.toggle("active",t.dataset.id===currentScene));
+  document.querySelectorAll(".tab").forEach((t,i)=>t.classList.toggle("on",i===activeTab));
+  updateInfo();   // đổi cảnh: tự hiện nội dung nếu có và đang bật
+}
+
+function buildTabs(){ const t=$("#tabs"); t.innerHTML="";
+  groups.forEach((g,i)=>{ const b=document.createElement("button"); b.className="tab"+(i===activeTab?" on":"");
+    b.textContent=g.name; b.onclick=()=>{activeTab=i;buildTabs();renderGrid();}; t.appendChild(b); });
+  if(groups.length<2) t.style.display="none";
+}
+function renderGrid(){ const g=$("#grid"); g.innerHTML="";
+  groups[activeTab].scenes.forEach(id=>{ if(!DATA.scenes[id])return;
+    const i=DATA.order.indexOf(id);
+    const c=document.createElement("div"); c.className="place"+(id===currentScene?" active":""); c.dataset.id=id;
+    c.innerHTML='<img loading="lazy" src="'+thumbOf(id)+'"><div class="cap"><span class="n">'+(i+1)+'</span>'+esc(DATA.names[id])+'</div>';
+    c.onclick=()=>{ viewer.loadScene(id); closePlaces(); }; g.appendChild(c); });
+}
+function openPlaces(){$("#places").classList.add("open");$("#backdrop").classList.add("show");}
+function closePlaces(){$("#places").classList.remove("open");$("#backdrop").classList.remove("show");}
+$("#btnPlaces").onclick=()=> $("#places").classList.contains("open")?closePlaces():openPlaces();
+$("#placesClose").onclick=closePlaces; $("#backdrop").onclick=()=>{closePlaces();$("#ipanel").classList.remove("open");};
+
+function go(step){ const o=DATA.order, i=o.indexOf(currentScene); viewer.loadScene(o[(i+step+o.length)%o.length]); }
+$("#btnPrev").onclick=()=>go(-1); $("#btnNext").onclick=()=>go(1);
+$("#btnHome").onclick=()=>viewer.loadScene(DATA.first||DATA.order[0]);
+$("#btnRotate").onclick=function(){ rotating=!rotating; this.classList.toggle("on",rotating);
+  rotating?viewer.startAutoRotate(-2):viewer.stopAutoRotate(); };
+$("#btnEye").onclick=function(){ this.classList.toggle("on", document.body.classList.toggle("nohs")); };
+$("#btnFull").onclick=function(){ const el=document.documentElement;
+  if(!document.fullscreenElement){ (el.requestFullscreen||el.webkitRequestFullscreen||(()=>{})).call(el); this.classList.add("on"); }
+  else{ (document.exitFullscreen||document.webkitExitFullscreen||(()=>{})).call(document); this.classList.remove("on"); } };
+
+let gyroOn=false;
+function setupGyro(){ if(!("ontouchstart" in window) || typeof DeviceOrientationEvent==="undefined") return;
+  $("#btnGyro").style.display=""; }
+$("#btnGyro").onclick=async function(){
+  try{
+    if(gyroOn){ viewer.stopOrientation(); gyroOn=false; this.classList.remove("on"); return; }
+    if(DeviceOrientationEvent.requestPermission){ const p=await DeviceOrientationEvent.requestPermission(); if(p!=="granted")return; }
+    viewer.startOrientation(); gyroOn=true; this.classList.add("on");
+  }catch(e){}
+};
+
+let musicOn=false, hasAudio=false; const bgm=$("#bgm");
+function setupAudio(){ fetch(AUDIO_SRC,{method:"HEAD"}).then(r=>{ hasAudio=r.ok;
+  if(!hasAudio) $("#btnMusic").style.display="none"; else { bgm.src=AUDIO_SRC; bgm.volume=0.45; }
+}).catch(()=>$("#btnMusic").style.display="none"); }
+function playMusic(){ if(!hasAudio)return; bgm.play().then(()=>{musicOn=true;$("#btnMusic").classList.add("on");}).catch(()=>{}); }
+$("#btnMusic").onclick=function(){ if(!hasAudio)return;
+  if(musicOn){ bgm.pause(); musicOn=false; this.classList.remove("on"); } else playMusic(); };
+
+$("#start").onclick=function(){ $("#cover").classList.add("hide");
+  if(rotating&&viewer) viewer.startAutoRotate(-2); playMusic();
+  setTimeout(()=>{ const c=$("#cover"); if(c) c.remove(); },800); };
+</script>
+</body>
+</html>

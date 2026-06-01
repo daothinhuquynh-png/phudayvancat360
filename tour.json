@@ -1,0 +1,1007 @@
+{
+  "title": "Phủ Dầy Vân Cát",
+  "subtitle": "Nơi Thánh Mẫu Giáng Sinh Lần Thứ Hai · Quần thể di tích Phủ Dầy, Nam Định",
+  "first": "fly",
+  "order": [
+    "fly",
+    "p083",
+    "p084",
+    "p086",
+    "p087",
+    "p123",
+    "p089",
+    "p093",
+    "p094",
+    "p095",
+    "p096",
+    "p097",
+    "p098",
+    "p099",
+    "p100",
+    "p101",
+    "p116",
+    "p103",
+    "p105",
+    "p106",
+    "p107",
+    "p108",
+    "p110",
+    "p111",
+    "p112",
+    "p113",
+    "p114",
+    "p115",
+    "p117",
+    "p118",
+    "p119",
+    "p121",
+    "p122",
+    "p125"
+  ],
+  "names": {
+    "fly": "PHỦ DẦY VÂN CÁT",
+    "p083": "Trước Tòa Phương Du",
+    "p084": "Cầu đá bên trái",
+    "p086": "Toà Phương Du",
+    "p087": "Cầu đá bên phải",
+    "p089": "Tòa Ngũ Vân Lâu",
+    "p093": "Toà Đại Bái",
+    "p094": "Cửa Lầu Cô",
+    "p095": "Lầu Cô",
+    "p096": "Cửa Lầu Cậu",
+    "p097": "Lầu Cậu",
+    "p098": "Gác Trống",
+    "p099": "Cung Quan Giám Sát",
+    "p100": "Gác Chuông",
+    "p101": "Cung Công Đồng",
+    "p103": "Cung Chúa Thủ Đền",
+    "p105": "Ban Bắc Đẩu",
+    "p106": "Cung Đức Vua Cha Ngọc Hoàng",
+    "p107": "Ban Nam Tào",
+    "p108": "Cung Tứ Phủ Chầu Bà",
+    "p110": "Ban Sơn Trang",
+    "p111": "Ban Cô Bơ Thoải Cung và Cô Đôi Thượng Ngàn",
+    "p112": "Ban Cô Đệ Nhất Thượng Thiên",
+    "p113": "Ban Ông Hổ",
+    "p114": "Ban Bà Chúa Cai Quản Bản Mệnh",
+    "p115": "Toà Dải Vũ (tả)",
+    "p116": "Bằng Di tích",
+    "p117": "Nhà Sắp lễ",
+    "p118": "Tòa Dải Vũ (hữu)",
+    "p119": "Ban thờ Khải Thân Phụ",
+    "p121": "Tam vị Vân Hương Thánh Mẫu",
+    "p122": "Ban thờ Khải Thân Mẫu",
+    "p123": "trước Ban Phật Bà Quan Âm",
+    "p125": "Đền Vua Cha"
+  },
+  "groups": [
+    {
+      "name": "Toàn cảnh",
+      "scenes": [
+        "fly"
+      ]
+    },
+    {
+      "name": "Cổng & Toà Phương Du",
+      "scenes": [
+        "p083",
+        "p084",
+        "p086",
+        "p087"
+      ]
+    },
+    {
+      "name": "Ngũ Vân Lâu & Đại Bái",
+      "scenes": [
+        "p089",
+        "p093"
+      ]
+    },
+    {
+      "name": "Lầu Cô · Lầu Cậu",
+      "scenes": [
+        "p094",
+        "p095",
+        "p096",
+        "p097"
+      ]
+    },
+    {
+      "name": "Cung Vua Cha · Quan Giám Sát",
+      "scenes": [
+        "p098",
+        "p099",
+        "p100",
+        "p101",
+        "p103",
+        "p105",
+        "p106",
+        "p107"
+      ]
+    },
+    {
+      "name": "Cung Tứ Phủ · Cung Cấm Tam Toà Thánh Mẫu",
+      "scenes": [
+        "p108",
+        "p119",
+        "p121",
+        "p122"
+      ]
+    },
+    {
+      "name": "Sơn Trang · Dải Vũ · Chùa",
+      "scenes": [
+        "p110",
+        "p111",
+        "p112",
+        "p113",
+        "p114",
+        "p115",
+        "p116",
+        "p117",
+        "p118",
+        "p123",
+        "p125"
+      ]
+    }
+  ],
+  "scenes": {
+    "fly": {
+      "panorama": "panos/fly.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p083",
+          "yaw": -2.8,
+          "pitch": -57.5,
+          "text": "Phủ Dầy Vân Cát"
+        }
+      ]
+    },
+    "p083": {
+      "panorama": "panos/083.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p086",
+          "yaw": 0,
+          "pitch": -3
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p084",
+          "yaw": -57.9,
+          "pitch": -6.3
+        },
+        {
+          "id": "h2",
+          "type": "scene",
+          "sceneId": "p087",
+          "yaw": 58.7,
+          "pitch": -2.4
+        }
+      ]
+    },
+    "p084": {
+      "panorama": "panos/084.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p086",
+          "yaw": 0,
+          "pitch": -12.7
+        },
+        {
+          "id": "l3",
+          "type": "scene",
+          "sceneId": "p083",
+          "yaw": 70.3,
+          "pitch": -19.1
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p089",
+          "yaw": -87,
+          "pitch": -13.1
+        }
+      ]
+    },
+    "p086": {
+      "panorama": "panos/086.jpg",
+      "hotSpots": [
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p083",
+          "yaw": 175.1,
+          "pitch": -29.3
+        },
+        {
+          "id": "h2",
+          "type": "scene",
+          "sceneId": "p084",
+          "yaw": -81.9,
+          "pitch": -12.9
+        },
+        {
+          "id": "h3",
+          "type": "scene",
+          "sceneId": "p087",
+          "yaw": 78.2,
+          "pitch": -13.7
+        },
+        {
+          "id": "h4",
+          "type": "info",
+          "text": "Tọa lạc phía trước phủ Vân Cát, toà Phương Du được Tổng đốc Cao Xuân Dục cho xây dựng vào năm 1901. Đây được coi là một điểm nhấn độc đáo trong quần thể di tích Phủ Dầy Vân Cát và mang dáng dấp kiến trúc nghệ thuật thời Nguyễn với cầu đá và lối đục chạm hoa văn trên nóc. “Phương” có nghĩa là “vuông”, “Du” có nghĩa là du quan, tuần du, vân du. Ngay tên gọi đã phản ánh chức năng của toà: có hình vuông, xưa là nơi các chức sắc ngồi chấm điểm hội thi Hát Văn và Hoa trượng hội, nay là nơi Thành hoàng làng - Vua Lý Nam Đế ngự để dự hội Thánh Mẫu tháng 3.",
+          "yaw": 22.6,
+          "pitch": -2
+        }
+      ]
+    },
+    "p087": {
+      "panorama": "panos/087.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p086",
+          "yaw": -6.5,
+          "pitch": -11.5
+        },
+        {
+          "id": "l2",
+          "type": "scene",
+          "sceneId": "p083",
+          "yaw": -105.2,
+          "pitch": -12.6
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p089",
+          "yaw": 97.1,
+          "pitch": -14.1
+        }
+      ]
+    },
+    "p089": {
+      "panorama": "panos/089.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p086",
+          "yaw": 0,
+          "pitch": -3
+        },
+        {
+          "id": "i1",
+          "type": "info",
+          "text": "Trước khi vào chiêm bái phủ, ai ai cũng phải đi qua toà Ngũ Vân Lâu được Tổng đốc Cao Xuân Dục cho xây dựng vào năm 1901. “Ngũ Vân” là đám mây ngũ sắc, hàm ý điềm lành như nhắc nhớ đến những lần Thánh Mẫu hiển linh có đám mây lành hiện ra. “Lâu” có nghĩa là lầu cao - nơi Thánh Mẫu ngự để ngắm cảnh và dự hội Hát Văn cùng hội Hoa Trượng. Toà bao gồm chín cổng với ý nghĩa “Cửu trùng thiên” như nhấn mạnh đến nguồn gốc xuất thân cao quý của bậc Tiên Thiên Thánh Mẫu. Trong toà có sự phân định chức năng của năm cổng chính và bốn cổng phụ. Vị trí ngay sau toà Phương Du là 5 cổng chính với ba cổng ở trung tâm là nơi Thánh Mẫu cùng Thị Nữ đi lại và 2 cổng tả hữu là lối dành cho vua quan và chức sắc. Dân chúng về hành lễ chiêm bái Thánh Mẫu sẽ vào ra ở bốn cổng tả hữu phủ.",
+          "yaw": 0,
+          "pitch": -10
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p093",
+          "yaw": 172.2,
+          "pitch": 3.5
+        }
+      ]
+    },
+    "p093": {
+      "panorama": "panos/093.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p099",
+          "yaw": 3.3,
+          "pitch": -22.1,
+          "text": "Cung Quan Giám Sát"
+        },
+        {
+          "id": "l2",
+          "type": "scene",
+          "sceneId": "p096",
+          "yaw": 90,
+          "pitch": -3,
+          "text": "Lầu Cậu"
+        },
+        {
+          "id": "l3",
+          "type": "scene",
+          "sceneId": "p094",
+          "yaw": -90,
+          "pitch": -3,
+          "text": "Lầu Cô"
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p083",
+          "yaw": 175.2,
+          "pitch": -26.2
+        }
+      ]
+    },
+    "p094": {
+      "panorama": "panos/094.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p095",
+          "yaw": 0.3,
+          "pitch": -25.6,
+          "text": "Lầu Cô"
+        },
+        {
+          "id": "l2",
+          "type": "scene",
+          "sceneId": "p093",
+          "yaw": 90,
+          "pitch": -3
+        },
+        {
+          "id": "l3",
+          "type": "scene",
+          "sceneId": "p125",
+          "yaw": -81.4,
+          "pitch": -14.1
+        },
+        {
+          "id": "i1",
+          "type": "info",
+          "text": "Lầu Cô là toà thờ tự các Thánh Cô thuộc bản đền và nằm trong hệ thống Tam Tứ Phủ. Đây cũng là nơi Bách gia trăm họ đến xin Lộc dễ nuôi, xin cho con cháu học hành thuận lợi thi cử đỗ đạt.",
+          "yaw": 0,
+          "pitch": -10
+        }
+      ]
+    },
+    "p095": {
+      "panorama": "panos/095.jpg",
+      "hotSpots": [
+        {
+          "id": "l2",
+          "type": "scene",
+          "sceneId": "p094",
+          "yaw": 180,
+          "pitch": -3
+        }
+      ]
+    },
+    "p096": {
+      "panorama": "panos/096.jpg",
+      "hotSpots": [
+        {
+          "id": "l3",
+          "type": "scene",
+          "sceneId": "p093",
+          "yaw": -104.7,
+          "pitch": -10.4
+        },
+        {
+          "id": "i1",
+          "type": "info",
+          "text": "Lầu cậu là toà thờ tự các Thánh Cậu thuộc bản đền và nằm trong hệ thống Tam Tứ Phủ. Đây cũng là nơi Bách gia trăm họ đến xin Lộc dễ nuôi, xin cho con cháu học hành thuận lợi thi cử đỗ đạt.",
+          "yaw": 0,
+          "pitch": -10
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p097",
+          "yaw": 19.2,
+          "pitch": -24.8
+        },
+        {
+          "id": "h2",
+          "type": "scene",
+          "sceneId": "p123",
+          "yaw": 90.6,
+          "pitch": -13.2
+        },
+        {
+          "id": "h3",
+          "type": "scene",
+          "sceneId": "p083",
+          "yaw": -179.2,
+          "pitch": -12.7
+        }
+      ]
+    },
+    "p097": {
+      "panorama": "panos/097.jpg",
+      "hotSpots": [
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p093",
+          "yaw": 161.4,
+          "pitch": -28.8
+        }
+      ]
+    },
+    "p098": {
+      "panorama": "panos/098.jpg",
+      "hotSpots": [
+        {
+          "id": "l2",
+          "type": "scene",
+          "sceneId": "p099",
+          "yaw": 180,
+          "pitch": -3
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p101",
+          "yaw": 73.8,
+          "pitch": -17.2
+        }
+      ]
+    },
+    "p099": {
+      "panorama": "panos/099.jpg",
+      "hotSpots": [
+        {
+          "id": "l2",
+          "type": "scene",
+          "sceneId": "p100",
+          "yaw": 72.9,
+          "pitch": -4.6,
+          "text": "Gác Chuông"
+        },
+        {
+          "id": "l3",
+          "type": "scene",
+          "sceneId": "p098",
+          "yaw": -90,
+          "pitch": -3,
+          "text": "Gác Trống"
+        },
+        {
+          "id": "l4",
+          "type": "scene",
+          "sceneId": "p093",
+          "yaw": 111.4,
+          "pitch": -18.9
+        },
+        {
+          "id": "i1",
+          "type": "info",
+          "text": "Phía trên cùng chính giữa đặt ngai của Quan Giám Sát, vị quan giám sát cai quản mọi việc cáo yết đến tế lễ hội hè của phủ trong năm. Nay phủ có phối thờ thêm hai Ông Hoàng trong Tam Tứ Phủ là Ông hoàng Bảy và Ông Hoàng Bơ. Tượng các Ngài được đặt ở dưới ngai của Quan Giám Sát: Ông Hoàng Bảy (bên trái), Quan Hoàng Mười (chính giữa), Quan Hoàng Bơ (bên phải).",
+          "yaw": 0,
+          "pitch": -10
+        }
+      ]
+    },
+    "p100": {
+      "panorama": "panos/100.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p116",
+          "yaw": -76.4,
+          "pitch": -20.4,
+          "text": "Bằng Di tích"
+        },
+        {
+          "id": "l2",
+          "type": "scene",
+          "sceneId": "p099",
+          "yaw": 161.4,
+          "pitch": -29.2
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p101",
+          "yaw": -125.8,
+          "pitch": -20.1
+        }
+      ]
+    },
+    "p101": {
+      "panorama": "panos/101.jpg",
+      "hotSpots": [
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p098",
+          "yaw": -125.4,
+          "pitch": -14.6
+        },
+        {
+          "id": "h2",
+          "type": "scene",
+          "sceneId": "p100",
+          "yaw": 105.9,
+          "pitch": -15.9
+        },
+        {
+          "id": "h3",
+          "type": "scene",
+          "sceneId": "p116",
+          "yaw": 74,
+          "pitch": -17.9
+        },
+        {
+          "id": "h4",
+          "type": "scene",
+          "sceneId": "p103",
+          "yaw": -90.4,
+          "pitch": -18.3
+        }
+      ]
+    },
+    "p103": {
+      "panorama": "panos/103.jpg",
+      "hotSpots": [
+        {
+          "id": "l2",
+          "type": "scene",
+          "sceneId": "p107",
+          "yaw": 58.3,
+          "pitch": -19.3,
+          "text": "Ban Nam Tào"
+        },
+        {
+          "id": "i1",
+          "type": "info",
+          "text": "Bên tả thờ tự Chúa Thủ Đền: Vị Thánh cai quản các việc nội cung. Bên hữu phụng thờ Thái Phi Trần Thị Ngọc Đài - Bà Chúa Thông Kê tài sắc vẹn toàn, có nhiều công lao trong việc mở mang kinh tế, văn hóa cho quê hương Vụ Bản và khởi xướng Hội thi Hoa Trượng tri ân công đức Thánh Mẫu, được dân gian tôn vinh là một trong “lục kỳ” (sáu sự kỳ lạ) của đất Thiên Bản.",
+          "yaw": 0,
+          "pitch": -10
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p105",
+          "yaw": -60.3,
+          "pitch": -20.8,
+          "text": "Ban Bắc Đẩu"
+        },
+        {
+          "id": "h2",
+          "type": "scene",
+          "sceneId": "p110",
+          "yaw": -96.3,
+          "pitch": -13.7
+        }
+      ]
+    },
+    "p105": {
+      "panorama": "panos/105.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p106",
+          "yaw": 110.4,
+          "pitch": -16.7
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p103",
+          "yaw": 172.5,
+          "pitch": -19.9
+        },
+        {
+          "id": "h2",
+          "type": "scene",
+          "sceneId": "p108",
+          "yaw": 43.1,
+          "pitch": -14.8
+        }
+      ]
+    },
+    "p106": {
+      "panorama": "panos/106.jpg",
+      "hotSpots": [
+        {
+          "id": "l2",
+          "type": "scene",
+          "sceneId": "p107",
+          "yaw": 55.4,
+          "pitch": -6.3
+        },
+        {
+          "id": "l3",
+          "type": "scene",
+          "sceneId": "p105",
+          "yaw": -78.5,
+          "pitch": -24.7
+        },
+        {
+          "id": "l4",
+          "type": "scene",
+          "sceneId": "p103",
+          "yaw": -133.2,
+          "pitch": -22.4
+        },
+        {
+          "id": "i1",
+          "type": "info",
+          "text": "Cung phụng thờ Ngọc Hoàng Thượng Đế: Vị vua tối cao nhất, cai quản các việc trong Tam giới Thiên - Địa - Nhân. Giúp việc cho Ngọc Hoàng là hai vị: Bên tả: Bắc Đẩu quản sổ tử, xét nghiệp duyên, định hạn và đoán cát hung; Bên hữu: Nam Tào giữ sổ sinh, chủ quản phúc đức, tuổi thọ và vận mệnh mỗi con người.",
+          "yaw": 0,
+          "pitch": -10
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p117",
+          "yaw": 86.8,
+          "pitch": -12.8
+        }
+      ]
+    },
+    "p107": {
+      "panorama": "panos/107.jpg",
+      "hotSpots": [
+        {
+          "id": "l3",
+          "type": "scene",
+          "sceneId": "p116",
+          "yaw": -166,
+          "pitch": -14.8
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p106",
+          "yaw": -108,
+          "pitch": -19.9
+        }
+      ]
+    },
+    "p108": {
+      "panorama": "panos/108.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p121",
+          "yaw": 75.7,
+          "pitch": 0.5,
+          "text": "Cung cấm"
+        },
+        {
+          "id": "l2",
+          "type": "scene",
+          "sceneId": "p106",
+          "yaw": -146.2,
+          "pitch": -4.8
+        },
+        {
+          "id": "i1",
+          "type": "info",
+          "text": "Tứ Phủ Chầu Bà bao gồm mười hai vị Chầu Bà cai quản khắp trên rừng dưới biển, bốn phương tám hướng. Mỗi vị Thánh Bà đều có sự tích gắn liền về nguồn gốc, có công lao và nhiệm vụ đại mệnh thay quyền cho Thánh Mẫu.",
+          "yaw": 0,
+          "pitch": -10
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p115",
+          "yaw": -80.9,
+          "pitch": -11.6
+        }
+      ]
+    },
+    "p110": {
+      "panorama": "panos/110.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p111",
+          "yaw": 66.4,
+          "pitch": -22.2
+        },
+        {
+          "id": "l2",
+          "type": "scene",
+          "sceneId": "p112",
+          "yaw": -60.7,
+          "pitch": -21.7
+        },
+        {
+          "id": "i1",
+          "type": "info",
+          "text": "Ở vị trí trung tâm là Ban Thờ Sơn Trang: phản ánh tục thờ các vị Thánh miền núi rừng đại diện cho đồng bào dân tộc. Cung cũng phối thờ thêm ba Thánh Cô cùng Hạ Ban Ngũ Hổ.",
+          "yaw": 0,
+          "pitch": -10
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p114",
+          "yaw": 134.9,
+          "pitch": -15.4
+        },
+        {
+          "id": "h2",
+          "type": "scene",
+          "sceneId": "p103",
+          "yaw": 170,
+          "pitch": -16.1
+        },
+        {
+          "id": "h3",
+          "type": "scene",
+          "sceneId": "p094",
+          "yaw": -156.6,
+          "pitch": -15.6
+        }
+      ]
+    },
+    "p111": {
+      "panorama": "panos/111.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p110",
+          "yaw": -117.1,
+          "pitch": -39.5
+        }
+      ]
+    },
+    "p112": {
+      "panorama": "panos/112.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p110",
+          "yaw": 58.1,
+          "pitch": -21.7
+        }
+      ]
+    },
+    "p113": {
+      "panorama": "panos/113.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p115",
+          "yaw": 0,
+          "pitch": -3
+        },
+        {
+          "id": "l2",
+          "type": "scene",
+          "sceneId": "p114",
+          "yaw": 90,
+          "pitch": -3
+        }
+      ]
+    },
+    "p114": {
+      "panorama": "panos/114.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p113",
+          "yaw": 175.5,
+          "pitch": -18.9
+        },
+        {
+          "id": "i1",
+          "type": "info",
+          "text": "Là nơi thờ các vị Thánh cai quản bản mệnh của các con nhang đệ tử khi đến phủ tôn nhang.",
+          "yaw": 0,
+          "pitch": -10
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p115",
+          "yaw": 138.2,
+          "pitch": -26.8
+        }
+      ]
+    },
+    "p115": {
+      "panorama": "panos/115.jpg",
+      "hotSpots": [
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p108",
+          "yaw": 95.3,
+          "pitch": -7.4
+        }
+      ]
+    },
+    "p116": {
+      "panorama": "panos/116.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p117",
+          "yaw": -82.1,
+          "pitch": -18.9
+        },
+        {
+          "id": "l2",
+          "type": "scene",
+          "sceneId": "p100",
+          "yaw": 84.4,
+          "pitch": -10.5
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p101",
+          "yaw": 152.4,
+          "pitch": -26.7
+        },
+        {
+          "id": "h2",
+          "type": "scene",
+          "sceneId": "p103",
+          "yaw": -153.6,
+          "pitch": -23.3
+        }
+      ]
+    },
+    "p117": {
+      "panorama": "panos/117.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p118",
+          "yaw": 17.3,
+          "pitch": -13.7,
+          "text": "Tòa Dải Vũ (hữu)"
+        },
+        {
+          "id": "l3",
+          "type": "scene",
+          "sceneId": "p116",
+          "yaw": -172.2,
+          "pitch": -29.3
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p103",
+          "yaw": -94.9,
+          "pitch": -23
+        }
+      ]
+    },
+    "p118": {
+      "panorama": "panos/118.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p117",
+          "yaw": -99.4,
+          "pitch": -11.8
+        },
+        {
+          "id": "i1",
+          "type": "info",
+          "text": "Thờ Tổng đốc Cao Xuân Dục: Người hưng công xây dựng phủ Vân Cát và Lịch đại Thủ Hương cùng các vị hậu thần.",
+          "yaw": 0,
+          "pitch": -10
+        }
+      ]
+    },
+    "p119": {
+      "panorama": "panos/119.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p121",
+          "yaw": -112.7,
+          "pitch": -11.9
+        }
+      ]
+    },
+    "p121": {
+      "panorama": "panos/121.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p119",
+          "yaw": 90,
+          "pitch": -3
+        },
+        {
+          "id": "l2",
+          "type": "scene",
+          "sceneId": "p122",
+          "yaw": -90,
+          "pitch": -3
+        },
+        {
+          "id": "l3",
+          "type": "scene",
+          "sceneId": "p108",
+          "yaw": 180,
+          "pitch": -3
+        },
+        {
+          "id": "i1",
+          "type": "info",
+          "text": "Cung cấm phụng thờ Vân Hương Thiên Tiên Tam Toà Thánh Mẫu bao gồm: Ban trung tâm có ba vị: Chính giữa là: Thiên Tiên Thánh Mẫu Liễu Hạnh Quỳnh Hoa Dung Công Chúa Tặng Phong Chế Thắng Hoà Diệu Đại Vương Mã Hoàng Bồ Tát: đóng vai trò là thần chủ trong tín ngưỡng thờ Mẫu Tam Tứ Phủ, là bậc Mẫu Nghi Thiên Hạ, giúp nước giúp dân linh ứng rõ ràng đã được nhiều triều đại sắc phong. Bên tả thờ tự Đệ Nhị Quỳnh Cung Duy Tiên Công Chúa. Bên hữu thờ tự  Đệ Tam Quảng Cung Quế Anh Công Chúa: Đóng vai trò hầu cận Thánh Mẫu cũng như cùng Ngài phù vua giúp nước giúp dân. Ban bên tả và ban bên hữu phụng thờ Khải Thánh Phụ và Khải Thánh Mẫu: Là nhị vị có công sinh thành dưỡng dục Thánh Mẫu.",
+          "yaw": 0,
+          "pitch": -10
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "fly",
+          "yaw": 105.8,
+          "pitch": -2.6
+        }
+      ]
+    },
+    "p122": {
+      "panorama": "panos/122.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p121",
+          "yaw": 89.2,
+          "pitch": -3.3,
+          "text": "Ban thờ Tam Vị Vân Hương Thánh Mẫu"
+        }
+      ]
+    },
+    "p123": {
+      "panorama": "panos/123.jpg",
+      "hotSpots": [
+        {
+          "id": "l2",
+          "type": "scene",
+          "sceneId": "p096",
+          "yaw": -139.8,
+          "pitch": -17.3,
+          "text": "Lầu Cậu"
+        }
+      ]
+    },
+    "p125": {
+      "panorama": "panos/125.jpg",
+      "hotSpots": [
+        {
+          "id": "l1",
+          "type": "scene",
+          "sceneId": "p094",
+          "yaw": 135.3,
+          "pitch": -7.7,
+          "text": "Lầu Cô"
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p083",
+          "yaw": 175.1,
+          "pitch": -5.6
+        }
+      ]
+    }
+  }
+}
