@@ -574,8 +574,8 @@
           "id": "h2",
           "type": "scene",
           "sceneId": "p110",
-          "yaw": -96.3,
-          "pitch": -13.7
+          "yaw": -79.2,
+          "pitch": -12.6
         }
       ]
     },
@@ -740,8 +740,8 @@
           "id": "h3",
           "type": "scene",
           "sceneId": "p094",
-          "yaw": -156.6,
-          "pitch": -15.6
+          "yaw": -136.1,
+          "pitch": -15.7
         }
       ]
     },
@@ -776,15 +776,22 @@
           "id": "l1",
           "type": "scene",
           "sceneId": "p115",
-          "yaw": 0,
-          "pitch": -3
+          "yaw": -29.9,
+          "pitch": -4.7
         },
         {
           "id": "l2",
           "type": "scene",
           "sceneId": "p114",
-          "yaw": 90,
-          "pitch": -3
+          "yaw": -92.4,
+          "pitch": -18.7
+        },
+        {
+          "id": "h1",
+          "type": "scene",
+          "sceneId": "p103",
+          "yaw": 157,
+          "pitch": -13.9
         }
       ]
     },
