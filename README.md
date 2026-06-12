@@ -1,7 +1,7 @@
 # Phủ Dầy Vân Cát 360° — Tour thực tế ảo
 
 Phần mềm tham quan thực tế ảo (virtual tour) cho **Phủ Vân Cát** — quần thể di tích
-Phủ Dầy, xã Kim Thái, huyện Vụ Bản, tỉnh Nam Định, **nơi Thánh Mẫu Liễu Hạnh
+Phủ Dầy, xã Kim Thái, huyện Vụ Bản, **nơi Thánh Mẫu Liễu Hạnh
 giáng sinh lần thứ hai**.
 
 Người dùng đứng giữa từng điểm trong phủ, kéo nhìn 360°, bấm mũi tên để "đi" sang
