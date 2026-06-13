@@ -64,10 +64,10 @@
     "p112": "Ban Cô Đệ Nhất Thượng Thiên",
     "p113": "Ban Ông Hổ",
     "p114": "Ban Bà Chúa Cai Quản Bản Mệnh",
-    "p115": "Toà Dải Vũ (tả)",
+    "p115": "Nhà Dải Vũ (tả)",
     "p116": "Bằng Di tích",
     "p117": "Nhà Sắp lễ",
-    "p118": "Tòa Dải Vũ (hữu)",
+    "p118": "Nhà Dải Vũ (hữu)",
     "p119": "Ban thờ Khải Thân Phụ",
     "p121": "Ban Tam Vị Vân Hương Thánh Mẫu",
     "p122": "Ban thờ Khải Thân Mẫu",
@@ -91,7 +91,7 @@
       ]
     },
     {
-      "name": "Ngũ Vân Lâu & Đại Bái",
+      "name": "Toà Ngũ Vân Lâu & Đại Bái",
       "scenes": [
         "p089",
         "p093"
@@ -129,7 +129,7 @@
       ]
     },
     {
-      "name": "Sơn Trang · Dải Vũ · Chùa",
+      "name": "Ban Sơn Trang · Nhà Dải Vũ · Chùa",
       "scenes": [
         "p110",
         "p111",
@@ -875,7 +875,7 @@
           "sceneId": "p118",
           "yaw": 17.3,
           "pitch": -13.7,
-          "text": "Tòa Dải Vũ (hữu)"
+          "text": "Nhà Dải Vũ (hữu)"
         },
         {
           "id": "l3",

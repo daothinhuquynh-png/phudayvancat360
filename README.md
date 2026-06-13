@@ -20,9 +20,10 @@ làm điểm mở đầu.
 - Ảnh 360° equirectangular xem được trên trình duyệt (desktop, mobile, tablet)
 - Mũi tên gắn thumbnail tròn + tên điểm đích để biết trước sẽ "đi" tới đâu
 - Bảng nội dung chú thích **tự hiện** khi vào toà có giới thiệu, có nút bật/tắt
-- 7 tab nhóm khu: Toàn cảnh · Cổng & Toà Phương Du · Ngũ Vân Lâu & Đại Bái ·
-  Lầu Cô · Lầu Cậu · Cung Vua Cha · Cung Giám Sát · Cung Tứ Phủ · Cung Cấm ·
-  Sơn Trang · Dải Vũ · Chùa Vân Cát
+- 7 tab nhóm khu: Toàn cảnh · Cổng & Toà Phương Du · Toà Ngũ Vân Lâu & Đại Bái ·
+  Lầu Cô · Lầu Cậu · Cung Vua Cha · Quan Giám Sát ·
+  Cung Tứ Phủ · Cung Cấm Tam Vị Vân Hương Thánh Mẫu ·
+  Ban Sơn Trang · Nhà Dải Vũ · Chùa
 - Nhạc nền (chầu văn) bật/tắt
 - Tự xoay, ẩn/hiện mũi tên, toàn màn hình, gyro xoay theo thiết bị (mobile)
 - Màn hình mở đầu "Bắt đầu tham quan"
